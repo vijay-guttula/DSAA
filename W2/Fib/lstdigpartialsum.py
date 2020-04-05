@@ -14,27 +14,36 @@ import sys
 '''
 #use the above code to find the length of the period
 
-def getlastdig(n, m):
-    #count = 60 for mod 10
-    #print(count)
-    f = m % 60
-    sum = 0
-    #print (f)
+def get_huge_fib_fast(n) :
+    #count = getperiod(10)
+    count = 60 #as it is the period lenght of 10
+    f = n % count
+
     if f <= 1 :
         return f
-    if n <= 1 :
-        sum = n
-    
+     
     prev, curr = 0, 1
+    
     for i in range(2, f+1) :
-        prev, curr = curr % 10, (prev + curr) % 10
-        if i >= n :
-            sum += curr
-    return sum % 10
+        prev, curr = curr, (prev + curr) % 10
+    return curr % 10
+    
+
+
+def getlastdigofpartialsum(n, m):
+    
+    #S(n) to S(m) = F(m+2) - F(n+1) as S(m) = F(m+2) - 1, and we took f(n+1), as we need to include f(n)
+     
+    a = (get_huge_fib_fast(m+2) + 10 - 1) % 10
+    b = (get_huge_fib_fast(n+1) + 10 - 1) % 10
+    return (a - b) % 10
+    #the +10 is for just in case of negative value 
+    
+    
 
 
 if __name__ == '__main__':
-    input = sys.stdin.readline();
+    input = sys.stdin.readline()
     n, m = map(int, input.split())
-    print(getlastdig(n, m))
+    print(getlastdigofpartialsum(n, m))
     

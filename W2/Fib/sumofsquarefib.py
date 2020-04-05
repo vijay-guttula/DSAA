@@ -14,31 +14,23 @@ import sys
 '''
 #use the above code to find the length of the period
 
-def get_huge_fib_fast(n) :
-    #count = getperiod(m)
-    count = 60 #as it is the period lenght of 10
-    f = n % count
-
-    if f <= 1 :
-        return f
+def getlastdig(n):
+    #count = 60 for mod 10
+    #print(count)
+    n = n % 60
+    sum = 1
+    #print (f)
+    if n <= 1 :
+        return n
     
     prev, curr = 0, 1
-    
-    for i in range(2, f+1) :
+    for i in range(2, n+1) :
         prev, curr = curr % 10, (prev + curr) % 10
-    return curr % 10
-    
-
-
-def getlastdigofsum(n):
-    
-    #S(n) = f(n+2) - 1
-    return (get_huge_fib_fast(n+2) - 1) % 10 #the +10 is for just incase of negative value
-
-    
+        sum += (curr ** 2) % 10
+    return sum % 10
 
 
 if __name__ == '__main__':
     n = int(input())
-    print(getlastdigofsum(n))
+    print(getlastdig(n))
     

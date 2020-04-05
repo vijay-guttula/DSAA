@@ -12,7 +12,7 @@ def getperiod(m) :
         if prev % m == 0 and curr % m == 1 :
             return count
 
-def get_fibonacci_huge_naive(n, m):
+def get_fibonacci_huge_fast(n, m):
     count = getperiod(m)
     #print(count)
     f = n % count
@@ -25,6 +25,6 @@ def get_fibonacci_huge_naive(n, m):
     return curr % m
 
 if __name__ == '__main__':
-    input = sys.stdin.readline();
+    input = sys.stdin.readline()
     n, m = map(int, input.split())
-    print(get_fibonacci_huge_naive(n, m))
+    print(get_fibonacci_huge_fast(n, m))
