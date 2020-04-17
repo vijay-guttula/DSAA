@@ -2,8 +2,8 @@
 
 ## Outline
 
-Week 1 - Basics
-Week 2 - Fibanacci
-Week 3 - Greedy Algo Techiques
+Week 1 - Basics  <br />
+Week 2 - Fibanacci <br />
+Week 3 - Greedy Algo Techiques <br />
 
-### The question of the problems can be found in the respective folder pdf
+### The questions of the problems can be found in the respective folder pdf
