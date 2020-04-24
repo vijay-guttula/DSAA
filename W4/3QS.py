@@ -9,12 +9,17 @@ def partition3(a, l, r):
     for i in range(l + 1, r + 1):
         if a[i] < x:
             m += 1
-            a[i], a[m] = a[m], a[i]
+            if m != i:
+                a[m], a[i] = a[i], a[m]
+
             j += 1
-            a[j], a[m] = a[m], a[j]
-        if a[i] == x:
+            if j != m:
+                a[m], a[j] = a[j], a[m]
+        elif a[i] == x:
             m += 1
-            a[m], a[i] = a[i], a[m]
+            if m != i:
+                a[i], a[m] = a[m], a[i]
+
     a[l], a[j] = a[j], a[l]
     return j, m
 
@@ -37,7 +42,7 @@ def randomized_quick_sort(a, l, r):
         return
     k = random.randint(l, r)
     a[l], a[k] = a[k], a[l]
-    # use partition3
+
     m1, m2 = partition3(a, l, r)
     randomized_quick_sort(a, l, m1 - 1)
     randomized_quick_sort(a, m2 + 1, r)
@@ -48,5 +53,6 @@ if __name__ == '__main__':
 
     input = sys.stdin.readline()
     a = list(map(int, input.split()))
-    randomized_quick_sort(a, 0, n - 1)
-    print(*a, sep=' ')
+    randomized_quick_sort(a, 0, len(a) - 1)
+    for i in a:
+        print(i, end=' ')
