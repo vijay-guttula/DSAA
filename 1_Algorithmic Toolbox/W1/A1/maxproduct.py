@@ -14,6 +14,7 @@ def maxfast(n):
 
 
 if __name__ == '__main__':
+    num = int(input())
     input = sys.stdin.readline()
     n = list(map(int, input.split()))
 
