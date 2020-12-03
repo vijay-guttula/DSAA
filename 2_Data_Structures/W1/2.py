@@ -1,29 +1,30 @@
 import sys
-#Not done yet
-'''
-Observation - the numbers not in the list are the leaf nodes.
-but searching from only leaves too takes O(n ** 2)
 
 
+def make_tree(t, n):
+    a = [[None]] * n
+    i = 0
+    stack = list()
+    while i < n:
 
-def height(n, tree):
-    count = None
-    height = 0
-    for i in range(n):
-        if i not in tree:
-            j = tree[i]
-            count = 0
-            while j != -1:
-                count += 1
-                j = tree[j]
-            height = max(height, count)
-    return height + 1
-
-'''
-
-
-def height():
-    for i in range(n):
+        if t[i] == -1:
+            a[i] = 0
+            i += 1
+        else:
+            if a[t[i]] is not None:
+                a[i] = 1 + a[t[i]]
+                i += 1
+            else:
+                stack.append(i)
+                i += 1
+    else:
+        while len(stack) != 0:
+            x = stack.pop(0)
+            if a[t[x]] is None:
+                stack.append(x)
+                continue
+            a[x] = 1 + a[t[x]]
+    return max(a) + 1
 
 
 if __name__ == '__main__':
@@ -32,4 +33,4 @@ if __name__ == '__main__':
 
     tree = list(map(int, input.split()))
 
-    print(height(n, tree))
+    print(make_tree(tree, n))
